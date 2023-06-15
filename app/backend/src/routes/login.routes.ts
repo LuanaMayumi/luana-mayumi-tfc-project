@@ -1,9 +1,15 @@
-import { Router, Request, Response } from 'express';
+// import { Router, Request, Response } from 'express';
+// import ValidateLogin from '../middlewares/ValidateLogin';
+// import userController from '../controllers/'
 
-const router = Router();
+// const router = Router();
 
-router.post('/login', (req: Request, res: Response) => {
-  loginController.login(req, res);
-});
+// router.post(
+//   '/',
+//   ValidateLogin.validate,
+//   (req: Request, res: Response) => {
+//     userController.login(req, res);
+//   },
+// );
 
-export default router;
+// export default router;
