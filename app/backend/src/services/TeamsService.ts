@@ -11,4 +11,9 @@ export default class TeamsService {
     const allTeams = await this.teamsModel.getAllTeams();
     return { status: 'SUCCESSFUL', data: allTeams };
   }
+
+  public async getOneTeam(id: number): Promise<ServiceResponse<ITeam | null>> {
+    const team = await this.teamsModel.getOneTeam(id);
+    return { status: 'SUCCESSFUL', data: team };
+  }
 }
