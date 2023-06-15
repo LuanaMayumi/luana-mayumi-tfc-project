@@ -22,7 +22,7 @@ export default class UserService {
       return {
         status: 'UNAUTHORIZED',
         data:
-      { message: 'Email or password invalid' } };
+      { message: 'All fields must be filled' } };
     }
 
     const isValid = await this.encrypter.compare(password, user.password);
@@ -31,7 +31,7 @@ export default class UserService {
       return {
         status: 'UNAUTHORIZED',
         data:
-      { message: 'Email or password invalid' } };
+      { message: 'All fields must be filled' } };
     }
 
     const token = this.token.generate(user);

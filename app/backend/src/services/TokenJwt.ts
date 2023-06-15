@@ -1,10 +1,14 @@
-// import * as jwt from 'jsonwebtoken';
-// import Token from '../Interfaces/Token';
-// import IUser from 'src/Interfaces/User';
+import * as jwt from 'jsonwebtoken';
+import IUser from '../Interfaces/User';
+import Token from '../Interfaces/Token';
 
-// export default class TokenJwt implements Token {
+const secret = process.env.JWT_SECRET as jwt.Secret;
+export default class TokenJwt implements Token {
+  private jwt = jwt;
 
-//   generate(user: IUser): string {
-//     const token = jwt.sign()
-//   }
-// }
+  generate(user: IUser): string {
+    const { password: _password, ...userWithoutPassword } = user;
+    const token = this.jwt.sign({ data: userWithoutPassword }, secret);
+    return token;
+  }
+}
