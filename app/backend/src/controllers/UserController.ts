@@ -18,7 +18,18 @@ export default class UserController {
 
     const token = await this.userService.login(email, password);
     if (token.status === 'INVALID_DATA') { return res.status(401).json(token.data); }
-    // if (token.status === 'UNAUTHORIZED') return res.status(400).json(token.data);
     return res.status(200).json(token.data);
+  }
+
+  public async loginRole(req: Request, res: Response): Promise<Response> {
+    const { authorization } = req.headers;
+
+    const user = await this.userService.loginRole(authorization || '');
+
+    if (user.status === 'UNAUTHORIZED') { return res.status(401).json(user.data); }
+
+    return res.status(200).json(
+      { role: user.data },
+    );
   }
 }
