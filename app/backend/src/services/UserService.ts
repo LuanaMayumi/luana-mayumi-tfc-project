@@ -20,18 +20,18 @@ export default class UserService {
 
     if (!user) {
       return {
-        status: 'UNAUTHORIZED',
+        status: 'INVALID_DATA',
         data:
-      { message: 'All fields must be filled' } };
+      { message: 'Invalid email or password' } };
     }
 
     const isValid = await this.encrypter.compare(password, user.password);
 
     if (!isValid) {
       return {
-        status: 'UNAUTHORIZED',
+        status: 'INVALID_DATA',
         data:
-      { message: 'All fields must be filled' } };
+      { message: 'Invalid email or password' } };
     }
 
     const token = this.token.generate(user);

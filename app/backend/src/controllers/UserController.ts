@@ -17,7 +17,8 @@ export default class UserController {
     const { email, password } = req.body;
 
     const token = await this.userService.login(email, password);
-    if (token.status === 'UNAUTHORIZED') return res.status(400).json(token.data);
+    if (token.status === 'INVALID_DATA') { return res.status(401).json(token.data); }
+    // if (token.status === 'UNAUTHORIZED') return res.status(400).json(token.data);
     return res.status(200).json(token.data);
   }
 }
