@@ -12,25 +12,33 @@ export default {
         autoIncrement: true,
         primaryKey: true,
       },
-      homeTeamId: {
+      homeTeamId: { // relação com a tabela teams, recebe o id
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: 'home_team_id'
+        field: 'home_team_id',
+        references: {
+          model: 'teams',
+          key: 'id'
+        }
       },
       homeTeamGoals: {
         type: DataTypes.INTEGER,
         allowNull: false,
         field: 'home_team_goals'
       },
-      awayTeamId: {
+      awayTeamId: { // relação com a tabela teams, recebe o id
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: 'awai_team_id'
+        field: 'away_team_id',
+        references: {
+          model: 'teams',
+          key: 'id'
+        }
       },
       awayTeamGoals: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: 'awai_team_goals'
+        field: 'away_team_goals'
       },
       inProgress: {
         type: DataTypes.BOOLEAN,
