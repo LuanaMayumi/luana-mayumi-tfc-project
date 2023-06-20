@@ -42,14 +42,13 @@ export default class MatchesModel {
     return db;
   }
 
-  async update(
+  async updateProgress(
     id: string,
   ): Promise<IMatche | null> {
     const [affectedRows] = await this.model.update(
       {
         inProgress: false,
       },
-      // é pra alterar só uma chave(inProgress)?
       {
         where: {
           id,
@@ -58,7 +57,20 @@ export default class MatchesModel {
     );
     if (affectedRows === 0) return null;
     const db = await this.model.findByPk(id);
-
     return db;
+  }
+
+  async updateMatche(
+    id: string,
+    homeTeamGoals: number,
+    awayTeamGoals: number,
+  ): Promise<void> {
+    await this.model.update(
+      {
+        homeTeamGoals,
+        awayTeamGoals,
+      },
+      { where: { id } },
+    );
   }
 }

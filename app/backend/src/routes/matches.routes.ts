@@ -16,6 +16,15 @@ router.patch(
   (
     req: Request,
     res: Response,
+  ) => matchesController.updateProgressMatche(req, res),
+);
+
+router.patch(
+  '/:id',
+  ValidateToken.validate,
+  (
+    req: Request,
+    res: Response,
   ) => matchesController.updateMatche(req, res),
 );
 

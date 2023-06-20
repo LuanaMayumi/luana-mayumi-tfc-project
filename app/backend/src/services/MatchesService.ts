@@ -17,25 +17,26 @@ export default class MatchesService {
     return { status: 'SUCCESSFUL', data: matches };
   }
 
-  public async updateMatche(
+  public async updateProgressMatche(
     id: string,
   ): Promise<ServiceResponse<{ message: string }>> {
-    // const foundMatche = await this.matchesModel.findByPk(id);
-
-    // if (!foundMatche) {
-    //   return {
-    //     status: 'NOT_FOUND',
-    //     data: {
-    //       message: 'Matche not found',
-    //     },
-    //   };
-    // }
-
-    await this.matchesModel.update(id);
+    await this.matchesModel.updateProgress(id);
     return { status: 'SUCCESSFUL',
       data: {
         message:
       'Finished',
       } };
+  }
+
+  public async updateMatche(
+    id: string,
+    homeTeamGoals: number,
+    awayTeamGoals: number,
+  ): Promise<ServiceResponse<string>> {
+    await this.matchesModel.updateMatche(id, homeTeamGoals, awayTeamGoals);
+    return {
+      status: 'SUCCESSFUL',
+      data: 'Matche updated',
+    };
   }
 }

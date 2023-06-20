@@ -17,9 +17,16 @@ export default class MatchesController {
     return res.status(200).json(matchesService.data);
   }
 
-  public async updateMatche(req: Request, res: Response) {
+  public async updateProgressMatche(req: Request, res: Response) {
     const { id } = req.params;
-    const changedMatche = await this.matchesService.updateMatche(id);
+    const changedMatche = await this.matchesService.updateProgressMatche(id);
     res.status(200).json(changedMatche.data);
+  }
+
+  public async updateMatche(req:Request, res: Response) {
+    const { id } = req.params;
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+    const matche = await this.matchesService.updateMatche(id, homeTeamGoals, awayTeamGoals);
+    res.status(200).json(matche.data);
   }
 }
