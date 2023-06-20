@@ -40,7 +40,12 @@ describe('/teams testes', () => {
   
       // expect(...)
     });
-
+    it('should find one team', async () => {
+      sinon.stub(TeamsModel, 'findByPk').resolves(team as any)
+      const response = await chai.request(app).get('/teams/1')
+      expect(response.status).to.equal(200);
+      expect(response.body).to.deep.equal(team)
+    })
   })
 
   // it('Seu sub-teste', () => {
