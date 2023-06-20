@@ -17,9 +17,9 @@ export default class MatchesController {
     return res.status(200).json(matchesService.data);
   }
 
-  // public async changeMatche(req: Request, res: Response) {
-  //   const { id } = req.params;
-  //   const changedMatche = await this.matchesService.changeMatche(id);
-  //   res.status(200).json({ message: 'Finished' });
-  // }
+  public async updateMatche(req: Request, res: Response) {
+    const { id } = req.params;
+    const changedMatche = await this.matchesService.updateMatche(id);
+    res.status(200).json(changedMatche.data);
+  }
 }

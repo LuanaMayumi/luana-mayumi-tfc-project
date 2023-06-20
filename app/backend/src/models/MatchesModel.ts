@@ -42,21 +42,23 @@ export default class MatchesModel {
     return db;
   }
 
-  // async update(
-  //   id: string,
-  //   data: IMatche,
-  // ): Promise<IMatche | null> {
-  //   const [affectedRows] = await this.model.update(
-  //     data, // é pra alterar só uma chave(inProgress)?
-  //     {
-  //       where: {
-  //         id,
-  //       },
-  //     },
-  //   );
-  //   if (affectedRows === 0) return null;
-  //   const db = await this.model.findByPk(id);
+  async update(
+    id: string,
+  ): Promise<IMatche | null> {
+    const [affectedRows] = await this.model.update(
+      {
+        inProgress: false,
+      },
+      // é pra alterar só uma chave(inProgress)?
+      {
+        where: {
+          id,
+        },
+      },
+    );
+    if (affectedRows === 0) return null;
+    const db = await this.model.findByPk(id);
 
-  //   return db;
-  // }
+    return db;
+  }
 }
