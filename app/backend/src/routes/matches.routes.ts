@@ -28,4 +28,13 @@ router.patch(
   ) => matchesController.updateMatche(req, res),
 );
 
+router.post(
+  '/',
+  ValidateToken.validate,
+  (
+    req: Request,
+    res: Response,
+  ) => matchesController.createMatche(req, res),
+);
+
 export default router;

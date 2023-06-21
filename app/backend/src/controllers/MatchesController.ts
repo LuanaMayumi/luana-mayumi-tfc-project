@@ -29,4 +29,9 @@ export default class MatchesController {
     const matche = await this.matchesService.updateMatche(id, homeTeamGoals, awayTeamGoals);
     res.status(200).json(matche.data);
   }
+
+  public async createMatche(req: Request, res: Response) {
+    const newMatcheDb = await this.matchesService.createMatche(req.body);
+    res.status(201).json(newMatcheDb.data);
+  }
 }

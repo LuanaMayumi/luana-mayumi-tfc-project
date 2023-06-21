@@ -1,5 +1,6 @@
 import SequelizeTeamsModel from '../database/models/SequelizeTeamsModel';
 import IMatche from '../Interfaces/Matche';
+import { NewEntity } from '../Interfaces';
 import SequelizeMatchesMOdel from '../database/models/SequelizeMatchesModel';
 
 export default class MatchesModel {
@@ -72,5 +73,12 @@ export default class MatchesModel {
       },
       { where: { id } },
     );
+  }
+
+  async create(
+    data: NewEntity<IMatche>,
+  ): Promise<IMatche> {
+    const newMatche = await this.model.create({ ...data, inProgress: true });
+    return newMatche;
   }
 }
