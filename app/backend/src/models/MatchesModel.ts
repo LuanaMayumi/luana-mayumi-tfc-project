@@ -75,16 +75,14 @@ export default class MatchesModel {
     );
   }
 
+  async getByTeamId(teamId: number):Promise<IMatche | null> {
+    const findTeam = await this.model.findByPk(teamId);
+    return findTeam ? findTeam.dataValues : null;
+  }
+
   async create(
     data: NewEntity<IMatche>,
-  ): Promise<IMatche | null> {
-    const { homeTeamId, awayTeamId } = data;
-    const homeTeamIdExistOnDB = await this.model.findByPk(homeTeamId);
-    const awayTeamIdExistOnDB = await this.model.findByPk(awayTeamId);
-
-    if (!homeTeamIdExistOnDB || !awayTeamIdExistOnDB) {
-      return null;
-    }
+  ): Promise<IMatche> {
     const newMatche = await this.model.create({ ...data, inProgress: true });
     return newMatche;
   }

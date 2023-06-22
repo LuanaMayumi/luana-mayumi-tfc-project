@@ -45,13 +45,17 @@ export default class MatchesService {
     newMatche: NewEntity<IMatche>,
   ):
     Promise<ServiceResponse<IMatche | string>> {
-    const newMatcheDb = await this.matchesModel.create(newMatche);
-    if (!newMatcheDb) {
+    const { homeTeamId, awayTeamId } = newMatche;
+    const findHomeTeam = await this.matchesModel.getByTeamId(homeTeamId);
+    const findAwayTeam = await this.matchesModel.getByTeamId(awayTeamId);
+    if (!findHomeTeam || !findAwayTeam) {
       return {
         status: 'NOT_FOUND',
         data: { message: 'There is no team with such id!' },
       };
     }
+
+    const newMatcheDb = await this.matchesModel.create(newMatche);
     return {
       status: 'SUCCESSFUL', data: newMatcheDb,
     };
