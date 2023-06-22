@@ -77,7 +77,14 @@ export default class MatchesModel {
 
   async create(
     data: NewEntity<IMatche>,
-  ): Promise<IMatche> {
+  ): Promise<IMatche | null> {
+    const { homeTeamId, awayTeamId } = data;
+    const homeTeamIdExistOnDB = await this.model.findByPk(homeTeamId);
+    const awayTeamIdExistOnDB = await this.model.findByPk(awayTeamId);
+
+    if (!homeTeamIdExistOnDB || !awayTeamIdExistOnDB) {
+      return null;
+    }
     const newMatche = await this.model.create({ ...data, inProgress: true });
     return newMatche;
   }

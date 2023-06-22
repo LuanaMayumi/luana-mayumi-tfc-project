@@ -19,7 +19,8 @@ export default {
         references: {
           model: 'teams',
           key: 'id'
-        }
+        },
+        // unique: true
       },
       homeTeamGoals: {
         type: DataTypes.INTEGER,
@@ -33,7 +34,8 @@ export default {
         references: {
           model: 'teams',
           key: 'id'
-        }
+        },
+        // unique: true
       },
       awayTeamGoals: {
         type: DataTypes.INTEGER,

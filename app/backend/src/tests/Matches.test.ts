@@ -50,5 +50,10 @@ describe('/matches tests', () => {
     expect(response.status).to.equal(200)
     expect(response.body).to.deep.equal("Matche updated")
   })
+  // it('should not possible create a matche that already exists', () => {
+
+  //   expect(response.status).to.equal(422)
+  //   expect(response.body).to.deep.equal('teste')
+  // })
   afterEach(sinon.restore);
 })
