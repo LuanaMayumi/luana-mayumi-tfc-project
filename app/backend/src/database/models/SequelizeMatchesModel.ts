@@ -26,7 +26,6 @@ SequelizeMatchesModel.init({
   homeTeamId: { // relação com a tabela teams, recebe o id
     type: DataTypes.INTEGER,
     allowNull: false,
-    // unique: true,
   },
   homeTeamGoals: {
     type: DataTypes.INTEGER,
@@ -36,7 +35,6 @@ SequelizeMatchesModel.init({
   awayTeamId: { // relação com a tabela teams, recebe o id
     type: DataTypes.INTEGER,
     allowNull: false,
-    // unique: true,
   },
   awayTeamGoals: {
     type: DataTypes.INTEGER,

@@ -4,21 +4,8 @@ export default interface IMatche {
   homeTeamGoals: number,
   awayTeamId:number,
   awayTeamGoals:number,
-  inProgress: boolean
+  inProgress: boolean,
+  homeTeam?: {
+    teamName: string
+  }
 }
-
-// export interface IMatche {
-//   id: number,
-//   homeTeamId: number,
-//   homeTeamGoals: number,
-//   awayTeamId:number,
-//   awayTeamGoals:number,
-//   inProgress: boolean
-// }
-
-// export interface NewMatche {
-//   homeTeamId: number,
-//   homeTeamGoals: number,
-//   awayTeamId:number,
-//   awayTeamGoals:number,
-// }
