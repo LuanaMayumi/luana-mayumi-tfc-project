@@ -17,6 +17,8 @@ export default class LeaderBoardService {
       totalLosses: 0,
       goalsFavor: 0,
       goalsOwn: 0,
+      goalsBalance: 0,
+      efficiency: '',
     };
   }
 
@@ -29,13 +31,28 @@ export default class LeaderBoardService {
       object.totalPoints += 3;
       object.totalVictories += 1;
     }
-    if (team.awayTeamGoals > team.homeTeamGoals) {
-      object.totalLosses += 1;
-    }
+    if (team.awayTeamGoals > team.homeTeamGoals) object.totalLosses += 1;
     if (team.homeTeamGoals === team.awayTeamGoals) {
       object.totalDraws += 1;
       object.totalPoints += 1;
     }
+
+    object.goalsBalance += team.homeTeamGoals - team.awayTeamGoals;
+
+    object.efficiency = ((
+      object.totalPoints / (object.totalGames * 3)) * 100).toFixed(2).toString();
+  }
+
+  private static orderingResult(finalObject: ILeaderBoard[]): void {
+    finalObject.sort((a, b) => {
+      if (a.totalPoints > b.totalPoints) return -1;
+      if (a.totalPoints < b.totalPoints) return 1;
+      if (a.goalsBalance > b.goalsBalance) return -1;
+      if (a.goalsBalance < b.goalsBalance) return 1;
+      if (a.goalsFavor > b.goalsFavor) return -1;
+      if (a.goalsFavor < b.goalsFavor) return 1;
+      return 0;
+    });
   }
 
   public async getLeaderBoard(): Promise<ILeaderBoard[]> {
@@ -54,6 +71,8 @@ export default class LeaderBoardService {
         LeaderBoardService.updateLeaderBoard(team, finalObject[teamName]);
       }
     });
-    return Object.values(finalObject);
+    const valueObject = Object.values(finalObject);
+    LeaderBoardService.orderingResult(valueObject);
+    return valueObject;
   }
 }

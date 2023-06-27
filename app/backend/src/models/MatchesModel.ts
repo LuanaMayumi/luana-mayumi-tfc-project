@@ -39,6 +39,7 @@ export default class MatchesModel {
           attributes: { exclude: ['id'] },
         },
       ],
+
     });
     return db;
   }
