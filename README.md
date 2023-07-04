@@ -1,13 +1,23 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# TFC Project
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+No projeto Trybe Futebol Clube foi desenvolvido uma API de um site informativo sobre partidas e classificações de futebol.
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+O Back-End da aplicação foi desenvolvido utilizando docker e modelagem de dados através do Sequelize.
+Para testes foi utilizado o método TDD com as bibliotecas Mocha e Chai, e MySQL para salvar os dados das partidas.
+
+Também foi utilizado o *JsonWebToken* para validar que o usuário só pudesse fazer alterações quando estivesse logado na aplicação.
+
+
+## 🛠️ Como esse projeto foi desenvolvido?
+
+<div align="left">
+
+**Tecnologias utilizadas:**
+<br>
+
+<img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"/>
+<img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/>
+<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+<img src="https://img.shields.io/badge/Mocha-8d6748?style=for-the-badge&logo=mocha&logoColor=white">
+<img src="https://img.shields.io/badge/Chai-bb5f56?style=for-the-badge&logo=chai&logoColor=white" />
+<img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white">
